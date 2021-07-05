@@ -9,6 +9,11 @@ async function main() {
 
     for(let id of iterateStrings()) {
 
+        if(fs.existsSync("scraped/p1" + id + ".json")) {
+            console.log("Already scraped " + id)
+            continue
+        }
+
         let link = "https://api.gettr.com/u/post/p1" + id + "?incl=poststats%7Cuserinfo"
                 
         let res = await fetch(link)
