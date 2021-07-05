@@ -3,11 +3,18 @@ const fs = require('fs')
 
 async function main() {
 
+    let reverse = false
+    for(let arg of process.argv) {
+        if(arg === "--reverse") {
+            reverse = true
+        }
+    }
+
     if(!fs.existsSync("scraped")) {
         fs.mkdirSync("scraped")
     }
 
-    for(let id of iterateStrings()) {
+    for(let id of iterateStrings(reverse)) {
 
         if(fs.existsSync("scraped/p1" + id + ".json")) {
             console.log("Already scraped " + id)
@@ -33,7 +40,7 @@ async function main() {
 
 }
 
-function iterateStrings() {
+function iterateStrings(reverse) {
     let strings = []
     let chars = validChars()
     for(let c1 of chars) {
@@ -45,7 +52,11 @@ function iterateStrings() {
             }
         }
     }
-    return strings
+    if(reverse) {
+        return strings.reverse()
+    } else {
+        return strings
+    }
 }
 
 function validChars() {
