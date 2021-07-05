@@ -8,6 +8,4 @@ Use this software only where and how legal. It is your responsibility to scrape 
 
 Installing dependencies `npm install`
 
-Create a `scraped/` folder in the same directory as the code
-
 Running `node index.js`

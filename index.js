@@ -3,6 +3,10 @@ const fs = require('fs')
 
 async function main() {
 
+    if(!fs.existsSync("scraped")) {
+        fs.mkdirSync("scraped")
+    }
+
     for(let id of iterateStrings()) {
 
         let link = "https://api.gettr.com/u/post/p1" + id + "?incl=poststats%7Cuserinfo"
